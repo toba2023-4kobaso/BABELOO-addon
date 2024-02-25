@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+
+  "header": {
+    "name": "transrater",
+    "description": "日本語と英語のチャット翻訳ツール",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 51],
+    "uuid": "e33f9230-5cf7-455c-aaab-495e640d54cf"
+  },
+
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "description": "日本語と英語のチャット翻訳ツール",
+      "uuid": "afed446a-163d-454c-96ec-19acfe3d3ed4",
+      "entry": "scripts/main.js",
+      "version": [1, 0, 0]
+    }
+  ],
+
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.9.0-beta"
+    }
+
+  ]
+}
