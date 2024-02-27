@@ -4,11 +4,16 @@ world.events.beforeChat.subscribe(event => {
     event.cancel = true;
     event.sender.runCommand("title @s times 0 0 0");
 
-    
-    const obj ={
-        message: [event.messege],
-        language: ["ja" , "en"]
+    let string;
+    if(event.sender.hasTag("japanese")) string = "ja";
+    if(event.sender.hasTag("english")) string = "en";
+
+    let obj ={
+        message: event.messege,
+        language: string
     }
 
-    event.sender.runCommand("title @s title ");
+    let strobj = JSON.stringify(obj);
+
+    event.sender.runCommand(`title @s title ${strobj}`);
 });
