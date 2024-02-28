@@ -4,16 +4,20 @@ world.beforeEvents.chatSend.subscribe(event => {
     event.cancel = true;
     event.sender.runCommandAsync("title @s times 0 0 0");
 
-    let string;
-    if(event.sender.hasTag("japanese")) string = "ja";
-    if(event.sender.hasTag("english")) string = "en";
+    const from = event.sender.getTags().find(t => t.startsWith("lang:")).slice(5);
 
-    let obj ={
+    const to_array = world.getAllPlayers().map(p => p.getTags().find(t => t.startsWith("lang:")).slice(5));
+    const to =  Array.from(new Set(to_array));
+
+    const obj ={
         message: event.message,
-        language: string
+        from: from,
+        to: to
     }
 
-    let strobj = JSON.stringify(obj);
+    const strobj = JSON.stringify(obj);
+
+    //world.sendMessage(strobj);
 
     event.sender.runCommandAsync(`title @s title ${strobj}`);
 });
